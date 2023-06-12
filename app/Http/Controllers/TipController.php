@@ -7,59 +7,31 @@ use Illuminate\Http\Request;
 
 class TipController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return Tip::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $tip = Tip::create($request->all());
+        return response()->json($tip, 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Tip $tip)
     {
-        //
+        return $tip;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Tip $tip)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Tip $tip)
     {
-        //
+        $tip->update($request->all());
+        return response()->json($tip, 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Tip $tip)
     {
-        //
+        $tip->delete();
+        return response()->json(null, 204);
     }
 }

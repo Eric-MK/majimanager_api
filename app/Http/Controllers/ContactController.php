@@ -29,9 +29,9 @@ class ContactController extends Controller
         return response()->json($contact, 200);
     }
 
-    public function destroy(Contact $report)
+    public function destroy(Contact $contact)
     {
-        $report->delete();
+        $contact->delete();
         return response()->json(null, 204);
     }
 }

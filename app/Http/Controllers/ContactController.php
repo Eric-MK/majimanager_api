@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
@@ -14,6 +15,17 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'phone' => 'required|string',
+            'email' => 'required|email',
+            'location' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
         $contact = Contact::create($request->all());
         return response()->json($contact, 201);
     }
@@ -25,6 +37,17 @@ class ContactController extends Controller
 
     public function update(Request $request, Contact $contact)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'string',
+            'phone' => 'string',
+            'email' => 'email',
+            'location' => 'string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
         $contact->update($request->all());
         return response()->json($contact, 200);
     }

@@ -12,15 +12,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return Report::all();
     }
 
     /**
@@ -28,38 +20,26 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $report = Report::create($request->all());
+        return response()->json($report, 201);
+
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Report $report)
     {
-        //
+        return $report;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Report $report)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Report $report)
     {
-        //
+        $report->update($request->all());
+        return response()->json($report, 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Report $report)
     {
-        //
+        $report->delete();
+        return response()->json(null, 204);
     }
 }

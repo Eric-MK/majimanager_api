@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
+use App\Exceptions\ReportNotFoundException;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
@@ -40,6 +41,9 @@ class ReportController extends Controller
 
     public function show(Report $report)
     {
+        if (!$report) {
+            throw new ReportNotFoundException;
+        }
         return $report;
     }
 

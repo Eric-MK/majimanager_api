@@ -16,9 +16,9 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'phone' => 'required|string',
-            'email' => 'required|email',
+            'name' => 'required|string|unique:contacts',
+            'phone' => 'required|string|unique:contacts',
+            'email' => 'required|email|unique:contacts',
             'location' => 'required|string',
         ]);
 

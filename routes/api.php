@@ -17,7 +17,7 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::post('reports', [ReportController::class, 'store']); // allow users to create reports
 
     Route::get('contacts', [ContactController::class, 'index']);
-    Route::get('contacts/{id}', [ContactController::class, 'show']);
+    Route::get('contacts/{contact}', [ContactController::class, 'show']);
 
     Route::get('tips', [TipController::class, 'index']);
     Route::get('tips/{id}', [TipController::class, 'show']);

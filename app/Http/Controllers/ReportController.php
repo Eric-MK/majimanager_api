@@ -26,8 +26,8 @@ class ReportController extends Controller
             'user_id' => 'required|exists:users,id',//The user_id attribute is required and must exist in the users table.
             'location' => 'required|string',
             'description' => 'required|string',
-            'status' => 'required|string',
-            'image' => 'nullable|string',
+/*             'status' => 'required|string',
+ */            'image' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {

@@ -13,7 +13,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
     // Common User routes
     Route::get('reports', [ReportController::class, 'index']);
-    Route::get('reports/{id}', [ReportController::class, 'show']);
+    Route::get('reports/{report}', [ReportController::class, 'show']);
     Route::post('reports', [ReportController::class, 'store']); // allow users to create reports
 
     Route::get('contacts', [ContactController::class, 'index']);

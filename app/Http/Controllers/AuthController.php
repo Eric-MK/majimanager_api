@@ -14,7 +14,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6|confirmed'
         ]);
 
         $user = User::create([
@@ -24,8 +24,8 @@ class AuthController extends Controller
         ]);
 
         return response()->json([
-            'user' => $user,
-            'token' => $user->createToken('API Token')->plainTextToken
+            'user_id' => $user->id,
+            'user_role' => $user->role
         ], 201);
     }
 
@@ -45,15 +45,13 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            'user' => $user,
-            'token' => $user->createToken('API Token')->plainTextToken
+            'user_id' => $user->id,
+            'user_role' => $user->role
         ]);
     }
 
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
 
-        return response()->json('Logged out');
     }
 }

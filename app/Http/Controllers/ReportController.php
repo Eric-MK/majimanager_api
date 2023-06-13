@@ -70,6 +70,6 @@ class ReportController extends Controller
     public function destroy(Report $report)
     {
         $report->delete();
-        return response()->json(null, 204);
+        return response()->json(['message' => 'Deleted successfully'], 200);
     }
 }

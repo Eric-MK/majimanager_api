@@ -22,11 +22,12 @@ class AuthController extends Controller
                 'message' => 'Email already in use.'
             ], 400);
         }
-        
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'user',  // set the 'role' attribute to 'user'
         ]);
 
         return response()->json([

@@ -20,7 +20,7 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::get('contacts/{contact}', [ContactController::class, 'show']);
 
     Route::get('tips', [TipController::class, 'index']);
-    Route::get('tips/{id}', [TipController::class, 'show']);
+    Route::get('tips/{tip}', [TipController::class, 'show']);
 
         // Admin routes
         Route::apiResource('reports', ReportController::class)->except(['store']); // except store because it's defined above

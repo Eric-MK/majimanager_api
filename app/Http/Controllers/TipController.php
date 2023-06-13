@@ -51,6 +51,6 @@ class TipController extends Controller
     public function destroy(Tip $tip)
     {
         $tip->delete();
-        return response()->json(null, 204);
+        return response()->json(['message' => 'Deleted successfully'], 200);
     }
 }

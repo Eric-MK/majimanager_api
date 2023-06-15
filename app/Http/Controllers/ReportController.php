@@ -14,7 +14,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return Report::all();
+        return Report::with('user')->get(); // Include user details with each report
     }
 
     /**
@@ -63,7 +63,9 @@ class ReportController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $report->update($request->all());
+        $updateData = $request->except('user_id');
+        $report->update($updateData);
+
         return response()->json($report, 200);
     }
 

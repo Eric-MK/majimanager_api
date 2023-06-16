@@ -66,7 +66,10 @@ class ReportController extends Controller
         $updateData = $request->except('user_id');
         $report->update($updateData);
 
-        return response()->json($report, 200);
+        return response()->json([
+            'message' => 'Status updated successfully',
+            'report' => $report
+        ], 200);
     }
 
     public function destroy(Report $report)

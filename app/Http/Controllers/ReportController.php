@@ -24,10 +24,13 @@ class ReportController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|exists:users,id',//The user_id attribute is required and must exist in the users table.
-            'location' => 'required|string',
+            'city' => 'required|string',
+            'street' => 'required|string',
+            'number' => 'required|string',
+            'postal_code' => 'required|string',
             'description' => 'required|string',
 /*             'status' => 'required|string',
- */            'image' => 'nullable|string',
+ */            //'image' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -53,7 +56,10 @@ class ReportController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_id' => 'exists:users,id',
-            'location' => 'string',
+            'city' => 'string',
+            'street' => 'string',
+            'number' => 'string',
+            'postal_code' => 'string',
             'description' => 'string',
             'status' => 'string',
             'image' => 'nullable|string',

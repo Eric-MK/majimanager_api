@@ -11,10 +11,12 @@ class Report extends Model
 
     protected $fillable = [//fillable property in Laravel is used to define which attributes of a model can be filled when creating or updating a model instance.
         'user_id',
-        'location',
+        'city',
+        'street',
+        'number',
+        'postal_code',
         'description',
-        'status',
-        'image',
+        'image'
     ];
 
     public function user()

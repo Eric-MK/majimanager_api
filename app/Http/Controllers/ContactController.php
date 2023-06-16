@@ -14,21 +14,24 @@ class ContactController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|unique:contacts',
-            'phone' => 'required|string|unique:contacts',
-            'email' => 'required|email|unique:contacts',
-            'location' => 'required|string',
-        ]);
+{
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|string',
+        'phone' => 'required|string|unique:contacts',
+        'email' => 'required|email|unique:contacts',
+        'location' => 'required|string',
+    ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
-
-        $contact = Contact::create($request->all());
-        return response()->json($contact, 201);
+    if ($validator->fails()) {
+        return response()->json($validator->errors(), 400);
     }
+
+    $contact = Contact::create($request->all());
+    return response()->json([
+        'message' => 'Contact created successfully!',
+        'contact' => $contact
+    ], 201);
+}
 
     public function show(Contact $contact)
     {

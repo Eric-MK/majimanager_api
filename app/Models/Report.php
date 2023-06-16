@@ -14,6 +14,7 @@ class Report extends Model
         'city',
         'street',
         'number',
+        'status',
         'postal_code',
         'description',
         'image'

@@ -56,13 +56,7 @@ class ReportController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_id' => 'exists:users,id',
-            'city' => 'string',
-            'street' => 'string',
-            'number' => 'string',
-            'postal_code' => 'string',
-            'description' => 'string',
-            'status' => 'string',
-            'image' => 'nullable|string',
+            'status' => 'required|string',
         ]);
 
         if ($validator->fails()) {

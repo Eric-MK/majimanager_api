@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('location');
+            $table->string('city');
+            $table->string('street');
+            $table->string('number');
+            $table->string('postal_code');
             $table->text('description');
             $table->string('status')->default('reported');
             $table->string('image')->nullable();

@@ -15,6 +15,8 @@ class TipController extends Controller
 
     public function store(Request $request)
     {
+        error_log($request);
+
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'content' => 'required|string',
@@ -25,7 +27,10 @@ class TipController extends Controller
         }
 
         $tip = Tip::create($request->all());
-        return response()->json($tip, 201);
+        return response()->json([
+            'message' => 'Tip created successfully',
+            'tip' => $tip
+        ], 201);
     }
 
     public function show(Tip $tip)

@@ -6,6 +6,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TipController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -26,5 +27,7 @@ Route::post('/login', [AuthController::class, 'login']);
         Route::apiResource('reports', ReportController::class)->except(['store']); // except store because it's defined above
         Route::apiResource('contacts', ContactController::class);
         Route::apiResource('tips', TipController::class);
+
+        Route::apiResource('users', UserController::class);
 
 

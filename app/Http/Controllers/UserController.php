@@ -16,9 +16,17 @@ class UserController extends Controller
 
     // Show a single user
     public function show($id)
-    {
-        return User::find($id);
+{
+    $user = User::find($id);
+
+    if ($user) {
+        return $user;
+    } else {
+        return response()->json([
+            'error' => 'User not found'
+        ], 404);
     }
+}
 
     // Create a new user
     public function store(Request $request)

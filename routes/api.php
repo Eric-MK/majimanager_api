@@ -29,5 +29,9 @@ Route::post('/login', [AuthController::class, 'login']);
         Route::apiResource('tips', TipController::class);
 
         Route::apiResource('users', UserController::class);
+        Route::put('users/{id}/password', [UserController::class, 'updatePassword']);
+        Route::delete('users/{id}', [UserController::class, 'destroy']);
+
+
 
 

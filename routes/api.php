@@ -32,6 +32,7 @@ Route::post('/login', [AuthController::class, 'login']);
         Route::put('users/{id}/password', [UserController::class, 'updatePassword']);
         Route::delete('users/{id}', [UserController::class, 'destroy']);
 
+        Route::get('users/{user}/reports', [ReportController::class, 'userReports']);
 
 
 

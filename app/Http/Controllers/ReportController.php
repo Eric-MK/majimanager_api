@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use App\Exceptions\ReportNotFoundException;
+use App\Models\User;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
@@ -48,6 +49,10 @@ class ReportController extends Controller
             throw new ReportNotFoundException;
         }
         return $report;
+    }
+    public function userReports(User $user) // $user is the User instance with id = 2
+    {
+        return $user->reports; // This assumes you have a reports relationship set up in your User model
     }
 
 

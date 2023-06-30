@@ -23,9 +23,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            // Only one foreign key definition is needed
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
         });
     }
 

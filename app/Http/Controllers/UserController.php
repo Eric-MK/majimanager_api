@@ -56,20 +56,28 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            //'password' => 'required|min:8',
         ]);
 
         $user = User::find($id);
+
+        if ($user->name === $request->name && $user->email === $request->email) {
+            return response()->json([
+                'message' => 'No changes detected',
+                'user' => $user
+            ], 200);
+        }
+
         $user->name = $request->name;
         $user->email = $request->email;
-       // $user->password = Hash::make($request->password);
         $user->save();
 
         return response()->json([
             'message' => 'User updated successfully',
             'user' => $user
-        ]);
+        ], 200);
     }
+
+
 
     public function updatePassword(Request $request, $id)
 {

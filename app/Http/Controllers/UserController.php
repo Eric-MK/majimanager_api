@@ -12,7 +12,9 @@ class UserController extends Controller
     // Show all users
     public function index()
     {
-        return User::all();
+        // Retrieve all users except the ones with the "admin" role
+        $users = User::where('role', '!=', 'admin')->get();
+        return $users;
     }
 
     // Show a single user

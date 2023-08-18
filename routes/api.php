@@ -33,6 +33,8 @@ Route::post('/login', [AuthController::class, 'login']);
         Route::delete('users/{id}', [UserController::class, 'destroy']);
 
         Route::get('users/{user}/reports', [ReportController::class, 'userReports']);
+        Route::get('reports/users', [ReportController::class, 'index']);
+        Route::get('allusers', [UserController::class, 'index']);
 
 
 
